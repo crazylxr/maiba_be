@@ -178,6 +178,7 @@ modify_time | datetime ||| 修改此条数据的时间
 
 ### 用户可能喜欢的类型（recommend_userLikeClassfication）
 解释：存储给每个用户推荐哪种类型的商品分别多少件。
+
 字段名 | 数据类型 | 默认值 | 运行非空 | 备注
 ---|---|---|---|---
 pk_id | char || not | 
