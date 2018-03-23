@@ -1,4 +1,4 @@
-package com.lxr.maiba_be;
+package com.lxr;
 
 
 import org.springframework.ui.ModelMap;

@@ -1,4 +1,4 @@
-package com.lxr.maiba_be;
+package com.lxr;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
