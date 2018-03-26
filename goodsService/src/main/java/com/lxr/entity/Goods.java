@@ -9,11 +9,11 @@ import java.util.Date;
 public class Goods {
 
     @Id
-    private String pk_id;
+    private String pkId;
 
-    private String goods_id;
+    private String goodsId;
 
-    private String lassification_id;
+    private String lassificationId;
 
     private String name;
 
@@ -23,43 +23,43 @@ public class Goods {
 
     private double price;
 
-    private double discount_price;
+    private double discountPrice;
 
     private double discount;
 
     private Integer volume;
 
-    private boolean is_shelf;
+    private boolean isShelf;
 
-    private Timestamp create_time;
+    private Timestamp createTime;
 
-    private Timestamp modify_time;
+    private Timestamp modifyTime;
 
     public Goods() {
     }
 
-    public String getPk_id() {
-        return pk_id;
+    public String getPkId() {
+        return pkId;
     }
 
-    public void setPk_id(String pk_id) {
-        this.pk_id = pk_id;
+    public void setPkId(String pkId) {
+        this.pkId = pkId;
     }
 
-    public String getGoods_id() {
-        return goods_id;
+    public String getGoodsId() {
+        return goodsId;
     }
 
-    public void setGoods_id(String goods_id) {
-        this.goods_id = goods_id;
+    public void setGoodsId(String goodsId) {
+        this.goodsId = goodsId;
     }
 
-    public String getLassification_id() {
-        return lassification_id;
+    public String getLassificationId() {
+        return lassificationId;
     }
 
-    public void setLassification_id(String lassification_id) {
-        this.lassification_id = lassification_id;
+    public void setLassificationId(String lassificationId) {
+        this.lassificationId = lassificationId;
     }
 
     public String getName() {
@@ -94,12 +94,12 @@ public class Goods {
         this.price = price;
     }
 
-    public double getDiscount_price() {
-        return discount_price;
+    public double getDiscountPrice() {
+        return discountPrice;
     }
 
-    public void setDiscount_price(double discount_price) {
-        this.discount_price = discount_price;
+    public void setDiscountPrice(double discountPrice) {
+        this.discountPrice = discountPrice;
     }
 
     public double getDiscount() {
@@ -110,35 +110,54 @@ public class Goods {
         this.discount = discount;
     }
 
-    public int getVolume() {
+    public Integer getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(Integer volume) {
         this.volume = volume;
     }
 
-    public boolean isIs_shelf() {
-        return is_shelf;
+    public boolean isShelf() {
+        return isShelf;
     }
 
-    public void setIs_shelf(boolean is_shelf) {
-        this.is_shelf = is_shelf;
+    public void setShelf(boolean shelf) {
+        isShelf = shelf;
     }
 
-    public Timestamp getCreate_time() {
-        return create_time;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Timestamp create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
-    public Timestamp getModify_time() {
-        return modify_time;
+    public Timestamp getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Timestamp modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Timestamp modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Goods{" +
+                "pkId='" + pkId + '\'' +
+                ", goodsId='" + goodsId + '\'' +
+                ", lassificationId='" + lassificationId + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", inventory=" + inventory +
+                ", price=" + price +
+                ", discountPrice=" + discountPrice +
+                ", discount=" + discount +
+                ", volume=" + volume +
+                ", isShelf=" + isShelf +
+                ", createTime=" + createTime +
+                ", modifyTime=" + modifyTime +
+                '}';
     }
 }

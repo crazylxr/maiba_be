@@ -4,28 +4,23 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Timestamp;
 
-/**
- * 收货地址
- */
 @Entity
-public class Address {
+public class Resources {
 
     @Id
     private String pkId;
 
-    private String userId;
-
-    private String tel;
-
-    private String address;
+    private String path;
 
     private String name;
+
+    private String type;
 
     private Timestamp createTime;
 
     private Timestamp modifyTime;
 
-    public Address() {
+    public Resources() {
     }
 
     public String getPkId() {
@@ -36,28 +31,12 @@ public class Address {
         this.pkId = pkId;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getPath() {
+        return path;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getName() {
@@ -66,6 +45,14 @@ public class Address {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Timestamp getCreateTime() {
@@ -86,12 +73,11 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
+        return "resources{" +
                 "pkId='" + pkId + '\'' +
-                ", userId='" + userId + '\'' +
-                ", tel='" + tel + '\'' +
-                ", address='" + address + '\'' +
+                ", path='" + path + '\'' +
                 ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
                 ", createTime=" + createTime +
                 ", modifyTime=" + modifyTime +
                 '}';

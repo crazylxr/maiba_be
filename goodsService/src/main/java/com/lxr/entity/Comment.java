@@ -8,35 +8,35 @@ import java.sql.Timestamp;
 public class Comment {
 
     @Id
-    private String pk_id;
+    private String pkId;
 
-    private String user_id;
+    private String userId;
 
     private String content;
 
     private Integer star;
 
-    private Timestamp create_time;
+    private Timestamp createTime;
 
-    private Timestamp modify_time;
+    private Timestamp modifyTime;
 
     public Comment() {
     }
 
-    public String getPk_id() {
-        return pk_id;
+    public String getPkId() {
+        return pkId;
     }
 
-    public void setPk_id(String pk_id) {
-        this.pk_id = pk_id;
+    public void setPkId(String pkId) {
+        this.pkId = pkId;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getContent() {
@@ -47,27 +47,39 @@ public class Comment {
         this.content = content;
     }
 
-    public int getStar() {
+    public Integer getStar() {
         return star;
     }
 
-    public void setStar(int star) {
+    public void setStar(Integer star) {
         this.star = star;
     }
 
-    public Timestamp getCreate_time() {
-        return create_time;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Timestamp create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
-    public Timestamp getModify_time() {
-        return modify_time;
+    public Timestamp getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Timestamp modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Timestamp modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "pkId='" + pkId + '\'' +
+                ", userId='" + userId + '\'' +
+                ", content='" + content + '\'' +
+                ", star=" + star +
+                ", createTime=" + createTime +
+                ", modifyTime=" + modifyTime +
+                '}';
     }
 }

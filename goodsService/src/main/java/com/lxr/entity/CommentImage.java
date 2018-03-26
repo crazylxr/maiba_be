@@ -8,66 +8,78 @@ import java.sql.Timestamp;
 public class CommentImage {
 
     @Id
-    private String pk_id;
+    private String pkId;
 
-    private String comment_id;
+    private String commentId;
 
-    private String resources_id;
+    private String resourcesId;
 
-    private Integer order_number;
+    private Integer orderNumber;
 
-    private Timestamp create_time;
+    private Timestamp createTime;
 
-    private Timestamp modify_time;
+    private Timestamp modifyTime;
 
     public CommentImage() {
     }
 
-    public String getPk_id() {
-        return pk_id;
+    public String getPkId() {
+        return pkId;
     }
 
-    public void setPk_id(String pk_id) {
-        this.pk_id = pk_id;
+    public void setPkId(String pkId) {
+        this.pkId = pkId;
     }
 
-    public String getComment_id() {
-        return comment_id;
+    public String getCommentId() {
+        return commentId;
     }
 
-    public void setComment_id(String comment_id) {
-        this.comment_id = comment_id;
+    public void setCommentId(String commentId) {
+        this.commentId = commentId;
     }
 
-    public String getResources_id() {
-        return resources_id;
+    public String getResourcesId() {
+        return resourcesId;
     }
 
-    public void setResources_id(String resources_id) {
-        this.resources_id = resources_id;
+    public void setResourcesId(String resourcesId) {
+        this.resourcesId = resourcesId;
     }
 
-    public Integer getOrder_number() {
-        return order_number;
+    public Integer getOrderNumber() {
+        return orderNumber;
     }
 
-    public void setOrder_number(Integer order_number) {
-        this.order_number = order_number;
+    public void setOrderNumber(Integer orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
-    public Timestamp getCreate_time() {
-        return create_time;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Timestamp create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
-    public Timestamp getModify_time() {
-        return modify_time;
+    public Timestamp getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Timestamp modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Timestamp modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+
+    @Override
+    public String toString() {
+        return "CommentImage{" +
+                "pkId='" + pkId + '\'' +
+                ", commentId='" + commentId + '\'' +
+                ", resourcesId='" + resourcesId + '\'' +
+                ", orderNumber=" + orderNumber +
+                ", createTime=" + createTime +
+                ", modifyTime=" + modifyTime +
+                '}';
     }
 }

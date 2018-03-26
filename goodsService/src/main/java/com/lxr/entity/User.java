@@ -10,7 +10,7 @@ import java.util.Date;
 public class User {
 
     @Id
-    private String pk_id;
+    private String pkId;
 
     private String username;
 
@@ -26,25 +26,25 @@ public class User {
 
     private String tel;
 
-    private boolean user_type;
+    private boolean userType;
 
     private boolean state;
 
-    private String default_delivery_id;
+    private String defaultDeliveryId;
 
-    private Timestamp create_time;
+    private Timestamp createTime;
 
-    private Timestamp modify_time;
+    private Timestamp modifyTime;
 
     public User() {
     }
 
-    public String getPk_id() {
-        return pk_id;
+    public String getPkId() {
+        return pkId;
     }
 
-    public void setPk_id(String pk_id) {
-        this.pk_id = pk_id;
+    public void setPkId(String pkId) {
+        this.pkId = pkId;
     }
 
     public String getUsername() {
@@ -103,12 +103,12 @@ public class User {
         this.tel = tel;
     }
 
-    public boolean isUser_type() {
-        return user_type;
+    public boolean isUserType() {
+        return userType;
     }
 
-    public void setUser_type(boolean user_type) {
-        this.user_type = user_type;
+    public void setUserType(boolean userType) {
+        this.userType = userType;
     }
 
     public boolean isState() {
@@ -119,27 +119,46 @@ public class User {
         this.state = state;
     }
 
-    public String getDefault_delivery_id() {
-        return default_delivery_id;
+    public String getDefaultDeliveryId() {
+        return defaultDeliveryId;
     }
 
-    public void setDefault_delivery_id(String default_delivery_id) {
-        this.default_delivery_id = default_delivery_id;
+    public void setDefaultDeliveryId(String defaultDeliveryId) {
+        this.defaultDeliveryId = defaultDeliveryId;
     }
 
-    public Timestamp getCreate_time() {
-        return create_time;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Timestamp create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
-    public Timestamp getModify_time() {
-        return modify_time;
+    public Timestamp getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Timestamp modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Timestamp modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "pkId='" + pkId + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", name='" + name + '\'' +
+                ", birthday=" + birthday +
+                ", gender=" + gender +
+                ", tel='" + tel + '\'' +
+                ", userType=" + userType +
+                ", state=" + state +
+                ", defaultDeliveryId='" + defaultDeliveryId + '\'' +
+                ", createTime=" + createTime +
+                ", modifyTime=" + modifyTime +
+                '}';
     }
 }

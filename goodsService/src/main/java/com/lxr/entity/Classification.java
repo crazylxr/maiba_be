@@ -8,27 +8,27 @@ import java.sql.Timestamp;
 public class Classification {
 
     @Id
-    private String pk_id;
+    private String pkId;
 
     private String name;
 
-    private String parent_id;
+    private String parentId;
 
-    private Integer leavel;
+    private int level;
 
-    private Timestamp create_time;
+    private Timestamp createTime;
 
-    private Timestamp modify_time;
+    private Timestamp modifyTime;
 
     public Classification() {
     }
 
-    public String getPk_id() {
-        return pk_id;
+    public String getPkId() {
+        return pkId;
     }
 
-    public void setPk_id(String pk_id) {
-        this.pk_id = pk_id;
+    public void setPkId(String pkId) {
+        this.pkId = pkId;
     }
 
     public String getName() {
@@ -39,35 +39,47 @@ public class Classification {
         this.name = name;
     }
 
-    public String getParent_id() {
-        return parent_id;
+    public String getParentId() {
+        return parentId;
     }
 
-    public void setParent_id(String parent_id) {
-        this.parent_id = parent_id;
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
     }
 
-    public int getLeavel() {
-        return leavel;
+    public int getLevel() {
+        return level;
     }
 
-    public void setLeavel(int leavel) {
-        this.leavel = leavel;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
-    public Timestamp getCreate_time() {
-        return create_time;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Timestamp create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
-    public Timestamp getModify_time() {
-        return modify_time;
+    public Timestamp getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Timestamp modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Timestamp modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Classification{" +
+                "pkId='" + pkId + '\'' +
+                ", name='" + name + '\'' +
+                ", parentId='" + parentId + '\'' +
+                ", level=" + level +
+                ", createTime=" + createTime +
+                ", modifyTime=" + modifyTime +
+                '}';
     }
 }

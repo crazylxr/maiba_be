@@ -16,11 +16,11 @@ public class GoodsImage {
 
     private int type;
 
-    private Integer order_number;
+    private Integer orderNumber;
 
-    private Timestamp create_time;
+    private Timestamp createTime;
 
-    private Timestamp modify_time;
+    private Timestamp modifyTime;
 
     public GoodsImage() {
     }
@@ -57,27 +57,40 @@ public class GoodsImage {
         this.type = type;
     }
 
-    public Integer getOrder_number() {
-        return order_number;
+    public Integer getOrderNumber() {
+        return orderNumber;
     }
 
-    public void setOrder_number(Integer order_number) {
-        this.order_number = order_number;
+    public void setOrderNumber(Integer orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
-    public Timestamp getCreate_time() {
-        return create_time;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Timestamp create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
-    public Timestamp getModify_time() {
-        return modify_time;
+    public Timestamp getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModify_time(Timestamp modify_time) {
-        this.modify_time = modify_time;
+    public void setModifyTime(Timestamp modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+
+    @Override
+    public String toString() {
+        return "GoodsImage{" +
+                "pk_id='" + pk_id + '\'' +
+                ", goods_id='" + goods_id + '\'' +
+                ", resources_id='" + resources_id + '\'' +
+                ", type=" + type +
+                ", orderNumber=" + orderNumber +
+                ", createTime=" + createTime +
+                ", modifyTime=" + modifyTime +
+                '}';
     }
 }
