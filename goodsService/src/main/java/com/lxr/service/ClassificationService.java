@@ -57,7 +57,7 @@ public class ClassificationService {
             Map<String, Object> map = new HashMap<>();
 
             if(classification.getParentId() == null) {
-                map.put("id", classification.getPkId());
+                map.put("value", classification.getPkId());
                 map.put("label", classification.getName());
                 map.put("children", childrenList);
 
@@ -80,6 +80,9 @@ public class ClassificationService {
     public List<Map<String, Object>> otherClassification(List<Classification> classifications, List<Map<String, Object>> lists) {
         // 递归退出条件
         if (classifications.size() == 0) {
+            for (Map<String, Object> l : lists) {
+               l.remove("children");
+            }
             return lists;
         }
 
@@ -87,9 +90,9 @@ public class ClassificationService {
 
         for (Map<String, Object> map : lists) {
             for (Classification classification : classifications) {
-                if (classification.getParentId().equals(map.get("id"))) {
+                if (classification.getParentId().equals(map.get("value"))) {
                     Map<String, Object> tmp = new HashMap<>();
-                    tmp.put("id", classification.getPkId());
+                    tmp.put("value", classification.getPkId());
                     tmp.put("label", classification.getName());
                     tmp.put("children", new ArrayList<Map<String, Object>>());
                     List<Map<String, Object>> children = (List<Map<String, Object>>) map.get("children");
