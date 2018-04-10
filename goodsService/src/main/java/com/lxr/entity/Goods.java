@@ -3,7 +3,6 @@ package com.lxr.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Entity
 public class Goods {
@@ -13,7 +12,7 @@ public class Goods {
 
     private String goodsId;
 
-    private String lassificationId;
+    private String classificationId;
 
     private String name;
 
@@ -54,12 +53,12 @@ public class Goods {
         this.goodsId = goodsId;
     }
 
-    public String getLassificationId() {
-        return lassificationId;
+    public String getClassificationId() {
+        return classificationId;
     }
 
-    public void setLassificationId(String lassificationId) {
-        this.lassificationId = lassificationId;
+    public void setClassificationId(String classificationId) {
+        this.classificationId = classificationId;
     }
 
     public String getName() {
@@ -147,7 +146,7 @@ public class Goods {
         return "Goods{" +
                 "pkId='" + pkId + '\'' +
                 ", goodsId='" + goodsId + '\'' +
-                ", lassificationId='" + lassificationId + '\'' +
+                ", classificationId='" + classificationId + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", inventory=" + inventory +

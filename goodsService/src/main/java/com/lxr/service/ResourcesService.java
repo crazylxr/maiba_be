@@ -17,8 +17,8 @@ public class ResourcesService {
     ResourcesRepository resourcesRepository;
 
     public Resources save(MultipartFile file) throws Exception {
-        String filePath = "src/main/resources/static/";
-
+//        String filePath = "src/main/resources/static/";
+        String filePath = "E://project//GraduationDesign/imgs/";
 
         Resources resources = new Resources();
         resources.setPkId(UUID.randomUUID().toString());
