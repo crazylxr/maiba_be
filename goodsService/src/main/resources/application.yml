@@ -9,8 +9,10 @@ spring:
       ddl-auto: update
     show-sql: true
   mvc:
-    throw-exception-if-no-handler-found: true #出现错误时, 直接抛出异常
-    static-path-pattern: file:${web.upload-poath}
+    throw-exception-if-no-handler-found: true # 出现错误时, 直接抛出异常
+    static-path-pattern: /** # 表示所有的访问都经过静态资源路径；
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${web.upload-path}
 
 web:
-  upload-path: E/:/project/GraduationDesign/imgs/
+  upload-path: E:/project/GraduationDesign/imgs/
