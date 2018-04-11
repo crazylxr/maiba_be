@@ -4,6 +4,7 @@ import com.lxr.entity.Resources;
 import com.lxr.repo.ResourcesRepository;
 import com.lxr.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,17 +17,18 @@ public class ResourcesService {
     @Autowired
     ResourcesRepository resourcesRepository;
 
+    @Value("${web.upload-path}")
+    private String filePath;
+
     public Resources save(MultipartFile file) throws Exception {
-//        String filePath = "src/main/resources/static/";
-        String filePath = "E://project//GraduationDesign/imgs/";
 
         Resources resources = new Resources();
         resources.setPkId(UUID.randomUUID().toString());
 
-        String path = filePath + resources.getPkId();
         String fileName = resources.getPkId();
+        String savePath = "localhost:8081//" + resources.getPkId() + ".png";
 
-        resources.setPath(path);
+        resources.setPath(savePath);
         resources.setName(fileName);
         resources.setCreateTime(new Timestamp(System.currentTimeMillis()));
 

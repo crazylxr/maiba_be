@@ -6,6 +6,9 @@ import com.lxr.util.ResponseWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
+
 
 @RestController
 public class GoodsController {
@@ -14,8 +17,18 @@ public class GoodsController {
     private GoodsService goodsService;
 
     @PostMapping("/goods")
-    public ResponseWrapper save(@RequestBody Goods goods) {
-        return ResponseWrapper.markSuccess(goodsService.save(goods));
+    public ResponseWrapper save(@RequestBody Map<String, Object> form) {
+        Goods goods = new Goods();
+        goods.setDescription((String) form.get("description"));
+        goods.setName((String) form.get("name"));
+        goods.setPrice(new Double(form.get("price").toString()));
+        goods.setDiscountPrice(new Double(form.get("discountPrice").toString()));
+        goods.setInventory((int) form.get("inventory"));
+
+        List<String> majorImagesList = (List<String>)(form.get("majorImages"));
+        List<String> minorImagesList = (List<String>) form.get("minorImages");
+
+        return ResponseWrapper.markSuccess(goodsService.save(goods, majorImagesList, minorImagesList));
     }
 
     @DeleteMapping("/goods")

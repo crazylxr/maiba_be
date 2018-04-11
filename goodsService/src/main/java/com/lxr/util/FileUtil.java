@@ -11,7 +11,7 @@ public class FileUtil {
             targetFile.mkdirs();
         }
 
-        FileOutputStream out = new FileOutputStream(filePath + fileName);
+        FileOutputStream out = new FileOutputStream(filePath + fileName + ".png");
         out.write(file);
         out.flush();
         out.close();
