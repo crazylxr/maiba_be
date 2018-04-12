@@ -8,11 +8,11 @@ import java.sql.Timestamp;
 public class GoodsImage {
 
     @Id
-    private String pk_id;
+    private String pkId;
 
-    private String goods_id;
+    private String goodsId;
 
-    private String resources_id;
+    private String resourcesId;
 
     private int type;
 
@@ -25,28 +25,28 @@ public class GoodsImage {
     public GoodsImage() {
     }
 
-    public String getPk_id() {
-        return pk_id;
+    public String getPkId() {
+        return pkId;
     }
 
-    public void setPk_id(String pk_id) {
-        this.pk_id = pk_id;
+    public void setPkId(String pkId) {
+        this.pkId = pkId;
     }
 
-    public String getGoods_id() {
-        return goods_id;
+    public String getGoodsId() {
+        return goodsId;
     }
 
-    public void setGoods_id(String goods_id) {
-        this.goods_id = goods_id;
+    public void setGoodsId(String goodsId) {
+        this.goodsId = goodsId;
     }
 
-    public String getResources_id() {
-        return resources_id;
+    public String getResourcesId() {
+        return resourcesId;
     }
 
-    public void setResources_id(String resources_id) {
-        this.resources_id = resources_id;
+    public void setResourcesId(String resourcesId) {
+        this.resourcesId = resourcesId;
     }
 
     public int getType() {
@@ -84,9 +84,9 @@ public class GoodsImage {
     @Override
     public String toString() {
         return "GoodsImage{" +
-                "pk_id='" + pk_id + '\'' +
-                ", goods_id='" + goods_id + '\'' +
-                ", resources_id='" + resources_id + '\'' +
+                "pkId='" + pkId + '\'' +
+                ", goodsId='" + goodsId + '\'' +
+                ", resourcesId='" + resourcesId + '\'' +
                 ", type=" + type +
                 ", orderNumber=" + orderNumber +
                 ", createTime=" + createTime +
