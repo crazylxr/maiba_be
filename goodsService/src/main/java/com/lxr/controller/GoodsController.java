@@ -16,7 +16,7 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
-    @PostMapping("/goods")
+    @PostMapping("/admin/goods")
     public ResponseWrapper save(@RequestBody Map<String, Object> form) {
         Goods goods = new Goods();
         goods.setDescription((String) form.get("description"));
@@ -31,13 +31,18 @@ public class GoodsController {
         return ResponseWrapper.markSuccess(goodsService.save(goods, majorImagesList, minorImagesList));
     }
 
-    @DeleteMapping("/goods")
+    @DeleteMapping("/admin/goods")
     public ResponseWrapper deleteByIds(@RequestParam String ids) {
         return ResponseWrapper.markSuccess(goodsService.deleteByIds(ids));
     }
 
-    @GetMapping("/goods")
+    @GetMapping("/admin/goods")
     public ResponseWrapper getGoods(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         return ResponseWrapper.markSuccess(goodsService.getGoods(page, size));
+    }
+
+    @GetMapping("/goods")
+    public ResponseWrapper getIndexGoods(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        return ResponseWrapper.markSuccess(goodsService.getIndexGoods(page, size));
     }
 }

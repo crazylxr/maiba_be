@@ -15,7 +15,7 @@ public class ClassificationController {
     @Autowired
     private ClassificationService classificationService;
 
-    @PostMapping("/classification")
+    @PostMapping("/admin/classification")
     public ResponseWrapper saveClassfication(@RequestBody Classification classification) {
         try{
             Classification classification1 = classificationService.saveClassifiction(classification);
@@ -26,13 +26,13 @@ public class ClassificationController {
         }
     }
 
-    @GetMapping("/classifications")
+    @GetMapping("/admin/classifications")
     public ResponseWrapper getClassification() {
         List<Map<String, Object>> classifications = classificationService.getClassifications();
         return ResponseWrapper.markSuccess(classifications);
     }
 
-    @DeleteMapping("/classification/{id}")
+    @DeleteMapping("/admin/classification/{id}")
     public ResponseWrapper deleteClassification(@PathVariable String id) {
         classificationService.deleteClassification(id);
         return ResponseWrapper.markSuccess(null);

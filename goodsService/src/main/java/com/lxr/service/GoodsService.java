@@ -14,10 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class GoodsService {
@@ -31,27 +28,44 @@ public class GoodsService {
     @Autowired
     ResourcesRepository resourcesRepository;
 
-    public Page<Goods> getGoods(int page, int size) throws Exception {
+    public Page<Goods> getGoods(int page, int size) {
         Pageable pageable = new PageRequest(page, size);
         Page<Goods> pages = goodsRepository.findAll(pageable);
 
-        for (Goods goods: pages) {
-            Map<String, Object> map = new HashMap<>();
-            map = Tool.convertBean(goods);
-        }
-        System.out.println(pages);
         return pages;
     }
 
-    public Map<String, Object> getGoodsImageByGoodsId(String goodId) {
+    public Map<String, Object> getIndexGoods(int page, int size) {
+        Page<Goods> _goods = getGoods(page, size);
+
+        List<Map<String, Object>> list = new ArrayList<>();
+
+        for (Goods goods: _goods) {
+            Map<String, Object> map = new HashMap<>();
+            List<List> _list = new ArrayList<>();
+            _list = getGoodsImageByGoodsId(goods.getPkId());
+            map.put("goods", goods);
+            map.put("majorImage", _list.get(0));
+            map.put("minorImage", _list.get(1));
+            list.add(map);
+        }
+
+        Map<String, Object> res = new HashMap<>();
+        res.put("content", list);
+        res.put("totalElements", _goods.getTotalElements());
+        res.put("totalPages", _goods.getTotalPages());
+
+        return res;
+    }
+
+    public List<List> getGoodsImageByGoodsId(String goodId) {
         List<Resources> major = resourcesRepository.findAllByGoodsIdAnAndType(goodId, 0);
         List<Resources> minor = resourcesRepository.findAllByGoodsIdAnAndType(goodId, 1);
 
-        Map<String, Object> map = new HashMap<>();
-        map.put("majorImages", major);
-        map.put("minorImages", minor);
-
-        return map;
+        List<List> list = new ArrayList<>();
+        list.add(major);
+        list.add(minor);
+        return list;
     }
 
     public Goods save(Goods goods, List<String> majorIds, List<String> minorIds) {

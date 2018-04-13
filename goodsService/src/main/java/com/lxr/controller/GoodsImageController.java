@@ -13,7 +13,7 @@ public class GoodsImageController {
     @Autowired
     GoodsImageService goodsImageService;
 
-    @GetMapping("/goodsImages")
+    @GetMapping("/admin/goodsImages")
     public ResponseWrapper getImagesByGoodsId(@RequestParam String goodsId, @RequestParam int type) {
         return ResponseWrapper.markSuccess(goodsImageService.getImagesByGoodsId(goodsId, type));
     }

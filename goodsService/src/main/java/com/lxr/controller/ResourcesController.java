@@ -14,7 +14,7 @@ public class ResourcesController {
     @Autowired
     ResourcesService resourcesService;
 
-    @PostMapping("/resources")
+    @PostMapping("/admin/resources")
     public ResponseWrapper save(@RequestParam("fileName") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
             return ResponseWrapper.markParamError();
