@@ -28,6 +28,8 @@ public class GoodsService {
     @Autowired
     ResourcesRepository resourcesRepository;
 
+
+    // for 后台
     public Page<Goods> getGoods(int page, int size) {
         Pageable pageable = new PageRequest(page, size);
         Page<Goods> pages = goodsRepository.findAll(pageable);
@@ -35,8 +37,21 @@ public class GoodsService {
         return pages;
     }
 
-    public Map<String, Object> getIndexGoods(int page, int size) {
-        Page<Goods> _goods = getGoods(page, size);
+    // for 前台
+    public Page<Goods> getGoodsByCondition(int page, int size, double endPrice, double startPrice, String title) {
+        Pageable pageable = new PageRequest(page, size);
+        Page<Goods> pages = null;
+        if (title == "" || title.isEmpty() || title.trim() == "") {
+            pages = goodsRepository.findAllByPriceIsLessThanAndPriceIsGreaterThan(pageable, endPrice, startPrice);
+        }else {
+            pages = goodsRepository.findAllByPriceIsLessThanAndPriceIsGreaterThanAndNameLike(pageable, endPrice, startPrice, "%" + title + "%");
+        }
+
+        return pages;
+    }
+
+    public Map<String, Object> getIndexGoods(int page, int size, String title, double startPrice, double endPrice) {
+        Page<Goods> _goods = getGoodsByCondition(page, size, endPrice, startPrice, title);
 
         List<Map<String, Object>> list = new ArrayList<>();
 

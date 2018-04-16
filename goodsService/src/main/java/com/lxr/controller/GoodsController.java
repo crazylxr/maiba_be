@@ -42,7 +42,9 @@ public class GoodsController {
     }
 
     @GetMapping("/goods")
-    public ResponseWrapper getIndexGoods(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
-        return ResponseWrapper.markSuccess(goodsService.getIndexGoods(page, size));
+    public ResponseWrapper getIndexGoods(@RequestParam(defaultValue = "0", required = false) int page, @RequestParam(defaultValue = "10", required = false) int size,
+                                         @RequestParam(required = false) String title, @RequestParam(defaultValue = "0") double startPrice,
+                                         @RequestParam(defaultValue = "999999") double endPrice) {
+        return ResponseWrapper.markSuccess(goodsService.getIndexGoods(page, size, title, startPrice, endPrice));
     }
 }

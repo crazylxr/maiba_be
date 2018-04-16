@@ -7,5 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 public interface GoodsRepository extends JpaRepository<Goods, String> {
-   Page<Goods> findAll(Pageable pageable);
+
+   Page<Goods> findAllByPriceIsLessThanAndPriceIsGreaterThanAndNameLike(Pageable pageable, double endPrice, double startPrice, String name);
+
+   Page<Goods> findAllByPriceIsLessThanAndPriceIsGreaterThan(Pageable pageable, double endPrice, double startPrice);
 }
