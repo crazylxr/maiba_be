@@ -41,7 +41,7 @@ public class GoodsService {
     public Page<Goods> getGoodsByCondition(int page, int size, double endPrice, double startPrice, String title) {
         Pageable pageable = new PageRequest(page, size);
         Page<Goods> pages = null;
-        if (title == "" || title.isEmpty() || title.trim() == "") {
+        if (title == null || title == "" || title.isEmpty() || title.trim() == "") {
             pages = goodsRepository.findAllByPriceIsLessThanAndPriceIsGreaterThan(pageable, endPrice, startPrice);
         }else {
             pages = goodsRepository.findAllByPriceIsLessThanAndPriceIsGreaterThanAndNameLike(pageable, endPrice, startPrice, "%" + title + "%");
