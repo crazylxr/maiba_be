@@ -37,6 +37,7 @@ public class GoodsService {
         return pages;
     }
 
+
     // for 前台
     public Page<Goods> getGoodsByCondition(int page, int size, double endPrice, double startPrice, String title) {
         Pageable pageable = new PageRequest(page, size);
@@ -50,6 +51,23 @@ public class GoodsService {
         return pages;
     }
 
+    public Goods updateGoodsById(String id) {
+        goodsRepository.save()
+        return null;
+    }
+
+    public Map<String, Object> getGoodsById(String id) {
+        Goods goods = goodsRepository.findOne(id);
+        List<Resources> majorImages =  resourcesRepository.findAllByGoodsIdAnAndType(id, 0);
+        List<Resources> minorImages =  resourcesRepository.findAllByGoodsIdAnAndType(id, 1);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("goods", goods);
+        map.put("majorImages", majorImages);
+        map.put("minorImages", minorImages);
+        return map;
+    }
+
     public Map<String, Object> getIndexGoods(int page, int size, String title, double startPrice, double endPrice) {
         Page<Goods> _goods = getGoodsByCondition(page, size, endPrice, startPrice, title);
 
@@ -57,7 +75,7 @@ public class GoodsService {
 
         for (Goods goods: _goods) {
             Map<String, Object> map = new HashMap<>();
-            List<List> _list = new ArrayList<>();
+            List<List> _list;
             _list = getGoodsImageByGoodsId(goods.getPkId());
             map.put("goods", goods);
             map.put("majorImage", _list.get(0));

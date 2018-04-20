@@ -24,6 +24,7 @@ public class GoodsController {
         goods.setPrice(new Double(form.get("price").toString()));
         goods.setDiscountPrice(new Double(form.get("discountPrice").toString()));
         goods.setInventory((int) form.get("inventory"));
+        goods.setClassificationId((String) form.get("classificationId"));
 
         List<String> majorImagesList = (List<String>)(form.get("majorImages"));
         List<String> minorImagesList = (List<String>) form.get("minorImages");
@@ -39,6 +40,16 @@ public class GoodsController {
     @GetMapping("/admin/goods")
     public ResponseWrapper getGoods(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         return ResponseWrapper.markSuccess(goodsService.getGoods(page, size));
+    }
+
+    @GetMapping("/admin/goods/{id}")
+    public ResponseWrapper getGoodsById(@PathVariable(value = "id") String id) {
+        return ResponseWrapper.markSuccess(goodsService.getGoodsById(id));
+    }
+
+    @PutMapping("/admin/goods/{id}")
+    public ResponseWrapper updateGoodsById(@PathVariable(value = "id") String id) {
+        return null;
     }
 
     @GetMapping("/goods")

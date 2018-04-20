@@ -15,6 +15,6 @@ public interface ResourcesRepository extends JpaRepository<Resources, String> {
     List<Resources> findAllByGoodsIdAnAndType(String goodsId, int type);
 
     @Query("select r from com.lxr.entity.Resources r ,com.lxr.entity.GoodsImage gi  where r.pkId = gi.resourcesId and gi.goodsId = ?1")
-    List<Resources> findAllByGoodsIdAn(String goodsId);
+    List<Resources> findAllByGoodsId(String goodsId);
 }
 
