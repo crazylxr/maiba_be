@@ -8,5 +8,9 @@ import java.util.List;
 
 @Repository
 public interface GoodsImageRepository extends JpaRepository<GoodsImage, String> {
+
    List<GoodsImage> findAllByGoodsIdAndType(String goodId, int type);
+
+   List<GoodsImage> findAllByGoodsIdAndTypeAndResourcesId(String goodId, int type, String resourcesId);
+
 }

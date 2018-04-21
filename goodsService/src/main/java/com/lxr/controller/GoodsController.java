@@ -19,6 +19,7 @@ public class GoodsController {
     @PostMapping("/admin/goods")
     public ResponseWrapper save(@RequestBody Map<String, Object> form) {
         Goods goods = new Goods();
+        goods.setPkId((String) form.get("pkId"));
         goods.setDescription((String) form.get("description"));
         goods.setName((String) form.get("name"));
         goods.setPrice(new Double(form.get("price").toString()));
@@ -26,8 +27,8 @@ public class GoodsController {
         goods.setInventory((int) form.get("inventory"));
         goods.setClassificationId((String) form.get("classificationId"));
 
-        List<String> majorImagesList = (List<String>)(form.get("majorImages"));
-        List<String> minorImagesList = (List<String>) form.get("minorImages");
+        List<Map<String, Object>> majorImagesList = (List<Map<String, Object>>)(form.get("majorImages"));
+        List<Map<String, Object>> minorImagesList = (List<Map<String, Object>>) form.get("minorImages");
 
         return ResponseWrapper.markSuccess(goodsService.save(goods, majorImagesList, minorImagesList));
     }
@@ -48,7 +49,7 @@ public class GoodsController {
     }
 
     @PutMapping("/admin/goods/{id}")
-    public ResponseWrapper updateGoodsById(@PathVariable(value = "id") String id) {
+    public ResponseWrapper updateGoodsById(@PathVariable(value = "id") String id, @RequestBody Goods goods) {
         return null;
     }
 

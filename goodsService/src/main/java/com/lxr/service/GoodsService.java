@@ -51,15 +51,14 @@ public class GoodsService {
         return pages;
     }
 
-    public Goods updateGoodsById(String id) {
-        goodsRepository.save()
+    public Goods updateGoodsById(String id, Goods goods) {
         return null;
     }
 
     public Map<String, Object> getGoodsById(String id) {
         Goods goods = goodsRepository.findOne(id);
-        List<Resources> majorImages =  resourcesRepository.findAllByGoodsIdAnAndType(id, 0);
-        List<Resources> minorImages =  resourcesRepository.findAllByGoodsIdAnAndType(id, 1);
+        List<Resources> majorImages =  resourcesRepository.findAllByGoodsIdAnAndType(id, 1);
+        List<Resources> minorImages =  resourcesRepository.findAllByGoodsIdAnAndType(id, 0);
 
         Map<String, Object> map = new HashMap<>();
         map.put("goods", goods);
@@ -101,8 +100,16 @@ public class GoodsService {
         return list;
     }
 
-    public Goods save(Goods goods, List<String> majorIds, List<String> minorIds) {
-        String id = UUID.randomUUID().toString();
+    public Goods save(Goods goods, List<Map<String, Object>> majorIds, List<Map<String, Object>> minorIds) {
+        String id;
+
+        // 如果是更新操作直接根据主键相同直接更新
+        if(goods.getPkId() == null || goods.getPkId().isEmpty()) {
+            id = UUID.randomUUID().toString();
+        }else {
+            id = goods.getPkId();
+        }
+
         goods.setPkId(id);
         goods.setVolume(0);
         goods.setGoodsId("" + System.currentTimeMillis());
@@ -113,23 +120,46 @@ public class GoodsService {
         return goodsRepository.save(goods);
     }
 
-    public void saveGoodsImages(String goodId, List<String> majorIds, List<String> minorIds) {
+    public void saveGoodsImages(String goodId, List<Map<String, Object>> majorIds, List<Map<String, Object>> minorIds) {
         for (int i = 0; i < majorIds.size(); i++) {
             GoodsImage gi = new GoodsImage();
-            gi.setPkId(UUID.randomUUID().toString());
+            String id;
+
+            // 用于判断是否已经存在该图片了，如果存在执行更新，不存在，执行新增
+            String resourcesId = (String) majorIds.get(i).get("pkId");
+            List<GoodsImage> goodsImageList = goodsImageRepository.findAllByGoodsIdAndTypeAndResourcesId(goodId, 1, resourcesId);
+
+            if(goodsImageList.size() != 0) {
+                id = goodsImageList.get(0).getPkId();
+            }else {
+                id = UUID.randomUUID().toString();
+            }
+
+            gi.setPkId(id);
             gi.setCreateTime(new Timestamp(System.currentTimeMillis()));
             gi.setGoodsId(goodId);
-            gi.setResourcesId(majorIds.get(i));
+            gi.setResourcesId((String) majorIds.get(i).get("pkId"));
             gi.setType(1);
             goodsImageRepository.save(gi);
         }
 
-        for (String minor : minorIds) {
+        for (Map<String, Object> minor : minorIds) {
             GoodsImage gi = new GoodsImage();
-            gi.setPkId(UUID.randomUUID().toString());
+
+            String id;
+
+            List<GoodsImage> goodsImageList = goodsImageRepository.findAllByGoodsIdAndTypeAndResourcesId(goodId, 0, (String) minor.get("pkId"));
+
+            if(goodsImageList.size() != 0) {
+                id = goodsImageList.get(0).getPkId();
+            }else {
+                id = UUID.randomUUID().toString();
+            }
+
+            gi.setPkId(id);
             gi.setCreateTime(new Timestamp(System.currentTimeMillis()));
             gi.setGoodsId(goodId);
-            gi.setResourcesId(minor);
+            gi.setResourcesId((String) minor.get("pkId"));
             gi.setType(0);
             goodsImageRepository.save(gi);
         }
