@@ -26,7 +26,7 @@ public class ResourcesService {
         resources.setPkId(UUID.randomUUID().toString());
 
         String fileName = resources.getPkId();
-        String savePath = "localhost:8081//" + resources.getPkId() + ".png";
+        String savePath = "localhost:8081/" + resources.getPkId() + ".png";
 
         resources.setPath(savePath);
         resources.setName(fileName);
