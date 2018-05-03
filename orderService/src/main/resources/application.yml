@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/goods?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://127.0.0.1:3306/order?useUnicode=true&characterEncoding=utf-8
     username: root
     password: 1234
   jpa:
@@ -14,14 +14,14 @@ spring:
   resources:
     static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${web.upload-path}
   application:
-    name: goods-service
+    name: order-service
 
 web:
   upload-path: E:/project/GraduationDesign/imgs/
+
 server:
-  port: 8091
+  port: 8092
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8090/eureka/
-

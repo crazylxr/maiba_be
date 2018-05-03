@@ -23,10 +23,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/signUp")
+    @PostMapping("/signIn")
     public ResponseWrapper signUp(HttpServletRequest request, HttpServletResponse response, @RequestBody User user) {
-        if (userService.getUser(user.getPkId()).size() == 0)
-            return ResponseWrapper.markSuccess("账号密码不匹配！");
+        if (userService.getUser(user.getUsername()).size() == 0)
+            return ResponseWrapper.markAccountError();
 
         Map<String, Object> loginInfo = new HashMap<>();
         loginInfo.put("userId", user.getPkId());
