@@ -66,6 +66,11 @@
 			<scope>true</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-hystrix</artifactId>
+		</dependency>
+
 		<!-- thymeleaf模板插件 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

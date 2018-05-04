@@ -1,5 +1,6 @@
 package com.lxr.controller;
 
+import com.lxr.service.ShoppingCartServvice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,10 +10,10 @@ import org.springframework.web.client.RestTemplate;
 public class ShoppingCartController {
 
     @Autowired
-    RestTemplate restTemplate;
+    ShoppingCartServvice shoppingCartServvice;
 
-    @GetMapping("/shop")
+    @GetMapping("/shoppingCart")
     public String shop() {
-        return restTemplate.getForObject("http://goods-service/admin/classifications", String.class);
+        return shoppingCartServvice.shop();
     }
 }

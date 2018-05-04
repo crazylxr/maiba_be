@@ -12,6 +12,7 @@
         <module>goodsService</module>
 		<module>orderService</module>
 		<module>eurekaServer</module>
+		<module>api-gateway</module>
     </modules>
 
 	<dependencyManagement>

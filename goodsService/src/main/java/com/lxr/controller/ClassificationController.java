@@ -27,7 +27,7 @@ public class ClassificationController {
     }
 
     @GetMapping("/admin/classifications")
-    public ResponseWrapper getClassification() {
+    public ResponseWrapper getClassification() throws InterruptedException {
         List<Map<String, Object>> classifications = classificationService.getClassifications();
         return ResponseWrapper.markSuccess(classifications);
     }
