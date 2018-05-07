@@ -30,4 +30,9 @@ public class ShoppingCartController {
         System.out.println(httpServletRequest.getHeader("Authorization"));
         return ResponseWrapper.markSuccess(shoppingCartServvice.save(shoppingCart, userId));
     }
+
+    @GetMapping("/shoppingCart/{userId}")
+    public ResponseWrapper getShoppingCartByUserId(@PathVariable String userId) throws Exception {
+        return ResponseWrapper.markSuccess(shoppingCartServvice.getShoppingCartByUserId(userId));
+    }
 }
