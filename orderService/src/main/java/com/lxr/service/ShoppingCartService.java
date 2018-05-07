@@ -28,8 +28,9 @@ public class ShoppingCartService {
         return "fallback";
     }
 
-    public ShoppingCart save(ShoppingCart shoppingCart) {
+    public ShoppingCart save(ShoppingCart shoppingCart, String userId) {
         shoppingCart.setPkId(UUID.randomUUID().toString());
+        shoppingCart.setUserId(userId);
         shoppingCart.setCreateTime(new Timestamp(System.currentTimeMillis()));
         return shoppingCartRepository.save(shoppingCart);
     }

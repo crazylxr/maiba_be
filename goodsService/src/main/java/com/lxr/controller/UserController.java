@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -25,14 +27,20 @@ public class UserController {
 
     @PostMapping("/signIn")
     public ResponseWrapper signUp(HttpServletRequest request, HttpServletResponse response, @RequestBody User user) {
-        if (userService.getUser(user.getUsername()).size() == 0)
+        List<User> users = new ArrayList<>();
+        users = userService.getUser(user.getUsername());
+        if (users.size() == 0)
             return ResponseWrapper.markAccountError();
 
         Map<String, Object> loginInfo = new HashMap<>();
         loginInfo.put("userId", user.getPkId());
 
         String jwt = JavaWebToken.createJavaWebToken(loginInfo);
-       return ResponseWrapper.markSuccess(jwt);
+
+        Map<String, Object> returnInfo = new HashMap<>();
+        returnInfo.put("jwt", jwt);
+        returnInfo.put("userId", users.get(0).getPkId());
+       return ResponseWrapper.markSuccess(returnInfo);
     }
 
     @PostMapping("/user")
