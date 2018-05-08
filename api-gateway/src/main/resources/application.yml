@@ -9,5 +9,21 @@ eureka:
 spring:
   application:
     name: api-gateway
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
 zuul:
+  max:
+    host:
+      connections: 500
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
   sensitive-headers:
