@@ -14,6 +14,8 @@ public class OrderItem {
 
     private String goodsId;
 
+    private double price;
+
     private int number;
 
     private double totalPrice;
@@ -47,6 +49,14 @@ public class OrderItem {
 
     public void setGoodsId(String goodsId) {
         this.goodsId = goodsId;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public int getNumber() {
@@ -87,6 +97,7 @@ public class OrderItem {
                 "pkId='" + pkId + '\'' +
                 ", orderId='" + orderId + '\'' +
                 ", goodsId='" + goodsId + '\'' +
+                ", price=" + price +
                 ", number=" + number +
                 ", totalPrice=" + totalPrice +
                 ", createTime=" + createTime +

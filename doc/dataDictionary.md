@@ -127,6 +127,7 @@ modify_time | datetime ||| 修改此条数据的时间
 pk_id | char || not | 
 order_id | char ||| 订单 id
 goods_id | char ||| 商品 id
+price | double ||| 商品单价
 number | int ||| 购买数量
 total_price | decimal ||| 该种商品总价
 create_time | datetime  | || 创建此条数据的时间
