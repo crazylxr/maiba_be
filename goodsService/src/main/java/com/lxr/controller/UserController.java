@@ -47,4 +47,9 @@ public class UserController {
     public ResponseWrapper signIn(@RequestBody User user) {
         return ResponseWrapper.markSuccess(userService.singIn(user));
     }
+
+    @GetMapping("/users")
+    public ResponseWrapper getUsers() {
+        return ResponseWrapper.markSuccess(userService.getUsers());
+    }
 }

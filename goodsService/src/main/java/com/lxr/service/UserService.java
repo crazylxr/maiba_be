@@ -30,4 +30,8 @@ public class UserService {
         List<User> users = userRepository.findAllByUsername(username);
         return users;
     }
+
+    public List<User> getUsers() {
+        return userRepository.findAll();
+    }
 }
