@@ -7,10 +7,7 @@ import com.lxr.util.ResponseWrapper;
 import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +21,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    HttpServletRequest request;
 
     @PostMapping("/signIn")
     public ResponseWrapper signUp(HttpServletRequest request, HttpServletResponse response, @RequestBody User user) {
@@ -45,11 +45,28 @@ public class UserController {
 
     @PostMapping("/user")
     public ResponseWrapper signIn(@RequestBody User user) {
-        return ResponseWrapper.markSuccess(userService.singIn(user));
+        return ResponseWrapper.markSuccess(userService.save(user));
     }
 
-    @GetMapping("/users")
+    @GetMapping("/admin/users")
     public ResponseWrapper getUsers() {
         return ResponseWrapper.markSuccess(userService.getUsers());
+    }
+
+    @GetMapping("/user")
+    public ResponseWrapper getUserById() {
+        String userId = request.getHeader("userId");
+        if (userId == null || userId == "" || userId.isEmpty()) {
+            return ResponseWrapper.markAccountError();
+        }
+        return  ResponseWrapper.markSuccess(userService.getUserById(userId));
+    }
+
+    @PutMapping("/user")
+    public ResponseWrapper updateUser(@RequestBody User user) {
+        String userId = request.getHeader("userId");
+        user.setPkId(userId);
+
+        return ResponseWrapper.markSuccess(userService.save(user));
     }
 }
