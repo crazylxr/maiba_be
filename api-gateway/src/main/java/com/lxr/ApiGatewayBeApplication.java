@@ -15,9 +15,4 @@ public class ApiGatewayBeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ApiGatewayBeApplication.class, args);
 	}
-
-	@Bean
-	public PreRequestLogFilter preRequestLogFilter() {
-		return new PreRequestLogFilter();
-	}
 }

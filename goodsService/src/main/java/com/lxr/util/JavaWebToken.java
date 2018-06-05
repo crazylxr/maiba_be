@@ -19,7 +19,6 @@ public class JavaWebToken {
 
     private static Key getKeyInstance() {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
-        // byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary("APP");
         String stringKey = "lixiaoran";
         byte[] encodeKey = Base64.getEncoder().encode(stringKey.getBytes());
 

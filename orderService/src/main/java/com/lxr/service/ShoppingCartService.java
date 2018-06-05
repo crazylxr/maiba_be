@@ -68,4 +68,9 @@ public class ShoppingCartService {
         }
         return res;
     }
+
+    public void deleteByGoodsId(String goodsId, String userId) {
+        int number = shoppingCartRepository.deleteByPkIdAndUserId(goodsId, userId);
+        System.out.print(number);
+    }
 }

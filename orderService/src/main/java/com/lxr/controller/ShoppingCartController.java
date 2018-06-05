@@ -35,4 +35,15 @@ public class ShoppingCartController {
     public ResponseWrapper getShoppingCartByUserId(@PathVariable String userId) throws Exception {
         return ResponseWrapper.markSuccess(shoppingCartServvice.getShoppingCartByUserId(userId));
     }
+
+    @DeleteMapping("/shoppingCart/{shoppingCartId}")
+    public ResponseWrapper deleteShoppingCartByGoodsId(@PathVariable String shoppingCartId, HttpServletRequest request) {
+        String userId = request.getHeader("userId");
+
+        if (userId == null || userId.isEmpty()) {
+            return ResponseWrapper.markAccountError();
+        }
+        shoppingCartServvice.deleteByGoodsId(shoppingCartId, userId);
+        return ResponseWrapper.markSuccess(1);
+    }
 }

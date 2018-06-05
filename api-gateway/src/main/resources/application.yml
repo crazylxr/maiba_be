@@ -1,7 +1,6 @@
 
 server:
   port: 8100
-
 eureka:
   client:
     serviceUrl:
@@ -9,7 +8,6 @@ eureka:
 spring:
   application:
     name: api-gateway
-
 hystrix:
   command:
     default:
@@ -27,3 +25,6 @@ zuul:
     socket-timeout-millis: 60000
     connect-timeout-millis: 60000
   sensitive-headers:
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
