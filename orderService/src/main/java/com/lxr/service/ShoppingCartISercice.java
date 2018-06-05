@@ -16,4 +16,5 @@ public interface ShoppingCartISercice {
 
     @GetMapping("/admin/goodsImages")
     public ResponseWrapper getImagesByGoodsId(@RequestParam(value = "goodsId", required = true) String goodsId, @RequestParam(value = "type", required = true) int type);
+
 }
